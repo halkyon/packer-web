@@ -13,13 +13,9 @@
 			"iso_url": "http://cdimage.debian.org/cdimage/archive/6.0.10/amd64/iso-cd/debian-6.0.10-amd64-netinst.iso",
 			"iso_checksum": "7f82d341561035f65933da43f94d5b52",
 			"iso_checksum_type": "md5",
-			"vboxmanage": [
-				["modifyvm", "{{ .Name }}", "--memory", "1024"],
-				["modifyvm", "{{ .Name }}", "--cpus", "2"]
-			],
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "15m",
+			"ssh_wait_timeout": "30m",
 			"http_directory": "./scripts",
 			"boot_wait": "5s",
 			"boot_command": [
@@ -45,13 +41,9 @@
 			"iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
 			"iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
 			"iso_checksum_type": "md5",
-			"vboxmanage": [
-				["modifyvm", "{{ .Name }}", "--memory", "1024"],
-				["modifyvm", "{{ .Name }}", "--cpus", "2"]
-			],
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "15m",
+			"ssh_wait_timeout": "30m",
 			"http_directory": "./scripts",
 			"boot_wait": "5s",
 			"boot_command": [
@@ -77,13 +69,9 @@
 			"iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
 			"iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
 			"iso_checksum_type": "md5",
-			"vboxmanage": [
-				["modifyvm", "{{ .Name }}", "--memory", "1024"],
-				["modifyvm", "{{ .Name }}", "--cpus", "2"]
-			],
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "15m",
+			"ssh_wait_timeout": "30m",
 			"http_directory": "./scripts",
 			"boot_wait": "5s",
 			"boot_command": [
@@ -109,13 +97,9 @@
 			"iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
 			"iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
 			"iso_checksum_type": "md5",
-			"vboxmanage": [
-				["modifyvm", "{{ .Name }}", "--memory", "1024"],
-				["modifyvm", "{{ .Name }}", "--cpus", "2"]
-			],
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "15m",
+			"ssh_wait_timeout": "30m",
 			"http_directory": "./scripts",
 			"boot_wait": "5s",
 			"boot_command": [
@@ -141,13 +125,9 @@
 			"iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
 			"iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
 			"iso_checksum_type": "md5",
-			"vboxmanage": [
-				["modifyvm", "{{ .Name }}", "--memory", "1024"],
-				["modifyvm", "{{ .Name }}", "--cpus", "2"]
-			],
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "15m",
+			"ssh_wait_timeout": "30m",
 			"http_directory": "./scripts",
 			"boot_wait": "5s",
 			"boot_command": [
@@ -252,7 +232,15 @@
 		},
 		{
 			"type": "shell",
-			"script": "./scripts/debian-php54.sh",
+			"script": "./scripts/debian-squeeze-php53.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
+			"only": [
+				"virtualbox-iso-debian-php53"
+			]
+		},
+		{
+			"type": "shell",
+			"script": "./scripts/debian-wheezy-php54.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
 				"virtualbox-iso-debian-php54"
@@ -260,7 +248,7 @@
 		},
 		{
 			"type": "shell",
-			"script": "./scripts/debian-php55.sh",
+			"script": "./scripts/debian-wheezy-php55.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
 				"virtualbox-iso-debian-php55"
@@ -268,7 +256,7 @@
 		},
 		{
 			"type": "shell",
-			"script": "./scripts/debian-php56.sh",
+			"script": "./scripts/debian-wheezy-php56.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
 				"virtualbox-iso-debian-php56"
@@ -276,7 +264,7 @@
 		},
 		{
 			"type": "shell",
-			"script": "./scripts/debian-hhvm.sh",
+			"script": "./scripts/debian-wheezy-hhvm.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
 				"virtualbox-iso-debian-hhvm"

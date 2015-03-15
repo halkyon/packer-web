@@ -2,9 +2,9 @@
 export DEBIAN_FRONTEND=noninteractive
 
 # Setup apt repository for MariaDB
-apt-get -y install python-software-properties
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
-add-apt-repository 'deb http://mirror.aarnet.edu.au/pub/MariaDB/repo/10.0/debian squeeze main'
+echo 'deb http://mirror.aarnet.edu.au/pub/MariaDB/repo/10.0/debian squeeze main' > /etc/apt/sources.list.d/mariadb.list
+echo 'deb-src http://mirror.aarnet.edu.au/pub/MariaDB/repo/10.0/debian squeeze main' >> /etc/apt/sources.list.d/mariadb.list
 
 # The root credentials for MariaDB installer
 debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password password root'

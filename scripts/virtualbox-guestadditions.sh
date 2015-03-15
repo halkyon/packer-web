@@ -14,10 +14,16 @@ apt-get -y install build-essential dkms
 if [ -f /etc/init.d/virtualbox-ose-guest-utils ]; then
 	/etc/init.d/virtualbox-ose-guest-utils stop
 	rmmod vboxguest
-	apt-get -y purge virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms virtualbox-ose-guest-utils
+	apt-get -y purge virtualbox-ose-guest-x11
+	apt-get -y autoremove
+	apt-get -y purge virtualbox-ose-guest-utils
+	apt-get -y purge virtualbox-ose-guest-dkms
 elif [ -f /etc/init.d/virtualbox-guest-utils ]; then
 	/etc/init.d/virtualbox-guest-utils stop
-	apt-get -y purge virtualbox-guest-utils virtualbox-guest-dkms virtualbox-guest-x11
+	apt-get -y purge virtualbox-guest-x11
+	apt-get -y autoremove
+	apt-get -y purge virtualbox-guest-utils
+	apt-get -y purge virtualbox-guest-dkms
 fi
 
 if [ ! -f $VBOX_ISO ]; then
@@ -29,6 +35,3 @@ sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
 
 rm $VBOX_ISO
-
-apt-get -y autoremove
-apt-get -y autoclean

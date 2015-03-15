@@ -9,7 +9,7 @@ echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/vagrant
 echo "Host *\n    UseDNS no" >> /etc/ssh/ssh_config
 
 # Setup apt repository for squeeze backports
-echo 'deb http://http.debian.net/debian squeeze-backports main' > /etc/apt/sources.list.d/squeeze-backports.list
+echo 'deb http://backports.debian.org/debian-backports squeeze-backports main' > /etc/apt/sources.list.d/squeeze-backports.list
 
 # Update apt sources
 apt-get update
