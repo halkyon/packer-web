@@ -11,6 +11,8 @@ apt-get update
 apt-get -y dist-upgrade
 apt-get -y install build-essential dkms
 
+rm /usr/lib/VBoxGuestAdditions
+
 if [ -f /etc/init.d/virtualbox-ose-guest-utils ]; then
 	/etc/init.d/virtualbox-ose-guest-utils stop
 	rmmod vboxguest

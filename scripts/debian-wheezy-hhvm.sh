@@ -9,3 +9,9 @@ echo 'deb http://dl.hhvm.com/debian wheezy main' > /etc/apt/sources.list.d/hhvm.
 apt-get update
 apt-get -y -t wheezy-backports install nginx
 apt-get -y install hhvm
+
+# Replace the php executable with HHVM for CLI scripts
+/usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
+
+# Start on boot (it won't by default)
+update-rc.d hhvm defaults

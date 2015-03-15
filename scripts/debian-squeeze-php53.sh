@@ -11,4 +11,4 @@ apt-get update
 apt-get -y install \
 	apache2 libapache2-mod-php5 php5 php5-apc php5-common php5-cli \
 	php5-tidy php5-ldap php5-mcrypt php5-curl php5-imagick \
-	php5-gd php5-sqlite php5-mysqlnd
+	php5-gd php5-sqlite php5-mysql
