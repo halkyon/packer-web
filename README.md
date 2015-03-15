@@ -12,8 +12,10 @@ To build a PHP 5.6 box, for example, specify that builder name in the `only` arg
 	packer build -only="virtualbox-iso-debian-php56" build.json
 
 You can also build multiple boxes at once, either by specifying specific builder names in the `only`
-argument, or just not giving the argument at all:
+argument:
 
 	packer build -only="virtualbox-iso-debian-php56,virtualbox-iso-debian-hhvm" build.json
+
+or not by not providing the `only` argument, which builds everything:
 
 	packer build build.json
