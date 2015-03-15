@@ -1,4 +1,5 @@
-packer_cache
+.vagrant/
+packer_cache/
 .DS_Store
 output-*/
 *.box
