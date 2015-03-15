@@ -11,10 +11,6 @@ apt-get update
 apt-get -y dist-upgrade
 apt-get -y install build-essential dkms
 
-if [ -f /usr/lib/VBoxGuestAdditions ]; then
-	rm /usr/lib/VBoxGuestAdditions
-fi
-
 if [ -f /etc/init.d/virtualbox-ose-guest-utils ]; then
 	/etc/init.d/virtualbox-ose-guest-utils stop
 	rmmod vboxguest
@@ -32,6 +28,10 @@ fi
 
 if [ ! -f $VBOX_ISO ]; then
 	wget -q http://download.virtualbox.org/virtualbox/${VBOX_VERSION}/VBoxGuestAdditions_${VBOX_VERSION}.iso -O $VBOX_ISO
+fi
+
+if [ -f /usr/lib/VBoxGuestAdditions ]; then
+	rm /usr/lib/VBoxGuestAdditions
 fi
 
 mount -o loop $VBOX_ISO /mnt
