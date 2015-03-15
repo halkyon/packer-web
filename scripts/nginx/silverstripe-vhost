@@ -1,0 +1,8 @@
+server {
+	listen 80;
+	root /var/www;
+	server_name localhost;
+
+	include /etc/nginx/hhvm.conf;
+	include /etc/nginx/silverstripe.conf;
+}
