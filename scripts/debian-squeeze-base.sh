@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Allow vagrant user to run sudo commands
 echo "vagrant ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vagrant
 echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/vagrant
-chmod 0644 /etc/sudoers.d/vagrant
+chmod 0440 /etc/sudoers.d/vagrant
 
 # Disable reverse lookup in SSH to speed things up
 echo "Host *\n    UseDNS no" >> /etc/ssh/ssh_config
