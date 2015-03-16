@@ -7,7 +7,7 @@ echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/vagrant
 chmod 0440 /etc/sudoers.d/vagrant
 
 # Disable reverse lookup in SSH to speed things up
-echo "Host *\n    UseDNS no" >> /etc/ssh/ssh_config
+echo -e "Host *\n    UseDNS no" >> /etc/ssh/ssh_config
 
 # Setup apt repository for squeeze backports
 echo 'deb http://backports.debian.org/debian-backports squeeze-backports main' > /etc/apt/sources.list.d/squeeze-backports.list
