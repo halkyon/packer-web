@@ -30,10 +30,6 @@ if [ ! -f $VBOX_ISO ]; then
 	wget -q http://download.virtualbox.org/virtualbox/${VBOX_VERSION}/VBoxGuestAdditions_${VBOX_VERSION}.iso -O $VBOX_ISO
 fi
 
-if [ -f /usr/lib/VBoxGuestAdditions ]; then
-	rm /usr/lib/VBoxGuestAdditions
-fi
-
 mount -o loop $VBOX_ISO /mnt
 sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
