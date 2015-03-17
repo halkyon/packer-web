@@ -6,6 +6,14 @@ echo "vagrant ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vagrant
 echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/vagrant
 chmod 0440 /etc/sudoers.d/vagrant
 
+# Allow vagrant user to get in without a password using a temporary SSH key
+mkdir -p /home/vagrant/.ssh
+wget --no-check-certificate \
+	https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub \
+	-O /home/vagrant/.ssh/authorized_keys
+chown -R vagrant:vagrant /home/vagrant/.ssh
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+
 # Disable reverse lookup in SSH to speed things up
 echo -e "Host *\n    UseDNS no" >> /etc/ssh/ssh_config
 
