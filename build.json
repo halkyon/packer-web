@@ -150,12 +150,12 @@
 		{
 			"type": "file",
 			"source": "./scripts/silverstripe/_ss_environment.php",
-			"destination": "/tmp/_ss_environment.php"
+			"destination": "/var/tmp/_ss_environment.php"
 		},
 		{
 			"type": "file",
 			"source": "./scripts/apache2/silverstripe-vhost",
-			"destination": "/tmp/silverstripe-vhost",
+			"destination": "/var/tmp/silverstripe-vhost",
 			"only": [
 				"virtualbox-web-debian6-php53",
 				"virtualbox-web-debian7-php54",
@@ -166,7 +166,7 @@
 		{
 			"type": "file",
 			"source": "./scripts/apache24/silverstripe-vhost",
-			"destination": "/tmp/silverstripe-vhost",
+			"destination": "/var/tmp/silverstripe-vhost",
 			"only": [
 				"virtualbox-web-debian8-php56"
 			]
@@ -174,7 +174,7 @@
 		{
 			"type": "file",
 			"source": "./scripts/nginx/silverstripe-vhost",
-			"destination": "/tmp/silverstripe-vhost",
+			"destination": "/var/tmp/silverstripe-vhost",
 			"only": [
 				"virtualbox-web-debian8-hhvm"
 			]
@@ -182,7 +182,7 @@
 		{
 			"type": "file",
 			"source": "./scripts/nginx/hhvm.conf",
-			"destination": "/tmp/nginx-hhvm.conf",
+			"destination": "/var/tmp/nginx-hhvm.conf",
 			"only": [
 				"virtualbox-web-debian8-hhvm"
 			]
@@ -190,7 +190,7 @@
 		{
 			"type": "file",
 			"source": "./scripts/nginx/silverstripe.conf",
-			"destination": "/tmp/nginx-silverstripe.conf",
+			"destination": "/var/tmp/nginx-silverstripe.conf",
 			"only": [
 				"virtualbox-web-debian8-hhvm"
 			]
