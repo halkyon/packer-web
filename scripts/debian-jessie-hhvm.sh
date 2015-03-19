@@ -7,8 +7,7 @@ echo 'deb http://dl.hhvm.com/debian wheezy-lts-3.6 main' > /etc/apt/sources.list
 
 # Install software
 apt-get update
-apt-get -y -t wheezy-backports install nginx
-apt-get -y install hhvm
+apt-get -y install nginx hhvm
 
 # Replace the php executable with HHVM for CLI scripts
 /usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
