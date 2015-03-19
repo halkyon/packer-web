@@ -2,4 +2,5 @@
 packer_cache/
 .DS_Store
 output-*/
-*.box
+builds/
+test-results/

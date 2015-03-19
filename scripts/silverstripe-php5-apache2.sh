@@ -4,11 +4,18 @@
 a2enmod rewrite
 a2enmod php5
 
-# Disable default site and enable silverstripe site
-a2dissite default
-mv /tmp/silverstripe-vhost /etc/apache2/sites-available/silverstripe
+# Disable default site (Apache 2.2)
+if [ -f /etc/apache2/sites-enabled/default ]; then
+	a2dissite default
+fi
+# Disable default site (Apache 2.4)
+if [ -f /etc/apache2/sites-enabled/000-default.conf ]; then
+	a2dissite 000-default.conf
+fi
+
+mv /tmp/silverstripe-vhost /etc/apache2/sites-available/silverstripe.conf
 mv /tmp/_ss_environment.php /var/_ss_environment.php
-a2ensite silverstripe
+a2ensite silverstripe.conf
 
 # Restart Apache
 service apache2 restart
