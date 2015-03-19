@@ -5,9 +5,6 @@ export DEBIAN_FRONTEND=noninteractive
 echo 'tmpfs /tmp tmpfs mode=1777,nosuid,nodev,size=1G 0 0' >> /etc/fstab
 mount /tmp
 
-# Set the apt-cacher client configuration
-echo 'Acquire::http::Proxy "http://192.168.1.9:3142";' > /etc/apt/apt.conf.d/01proxy
-
 # Allow vagrant user to run sudo commands
 echo "vagrant ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vagrant
 echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/vagrant
