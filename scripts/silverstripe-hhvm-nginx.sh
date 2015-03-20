@@ -14,7 +14,7 @@ service nginx restart
 # Create webroot with correct permissions
 rm -rf /var/www
 mkdir /var/www
-hhvm -v ResourceLimit.SocketDefaultTimeout=300 -v Http.SlowQueryThreshold=300000 -v Eval.Jit=false \
+hhvm -v ResourceLimit.SocketDefaultTimeout=600 -v Http.SlowQueryThreshold=600000 -v Eval.Jit=false \
 	/usr/local/bin/composer create-project silverstripe/installer /var/www \
 	--no-dev --prefer-dist --no-progress
 chown -R www-data:www-data /var/www
