@@ -16,6 +16,6 @@ argument:
 
 	packer build -only="virtualbox-iso-debian-php56,virtualbox-iso-debian-hhvm" build.json
 
-or not by not providing the `only` argument, which builds everything:
+or leaving out the `only` argument, which builds everything:
 
 	packer build build.json
