@@ -13,6 +13,7 @@ if [ -f /etc/apache2/sites-enabled/000-default.conf ]; then
 	a2dissite 000-default.conf
 fi
 
+# Enable silverstripe site
 mv /var/tmp/silverstripe-vhost /etc/apache2/sites-available/silverstripe.conf
 mv /var/tmp/_ss_environment.php /var/_ss_environment.php
 a2ensite silverstripe.conf
