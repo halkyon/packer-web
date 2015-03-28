@@ -20,7 +20,7 @@ a2ensite silverstripe.conf
 # Restart Apache
 service apache2 restart
 
-# Create webroot with correct permissions
+# Create webroot
 rm -rf /var/www
 mkdir /var/www
 composer create-project silverstripe/installer /var/www \
@@ -35,7 +35,7 @@ echo -e "<?php\nphpinfo();" > /var/www/phpinfo.php
 mv /var/tmp/opcache.php /var/www/opcache.php
 mv /var/tmp/apc.php /var/www/apc.php
 
-# Fix permissions
+# Fix webroot permissions
 chown -R www-data:www-data /var/www
 chmod -R 0755 /var/www
 

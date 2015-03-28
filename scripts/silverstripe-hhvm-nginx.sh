@@ -11,7 +11,7 @@ ln -s /etc/nginx/sites-available/silverstripe /etc/nginx/sites-enabled/silverstr
 # Restart nginx
 service nginx restart
 
-# Create webroot with correct permissions
+# Create webroot
 rm -rf /var/www
 mkdir /var/www
 hhvm -v ResourceLimit.SocketDefaultTimeout=600 -v Http.SlowQueryThreshold=600000 -v Eval.Jit=false \
