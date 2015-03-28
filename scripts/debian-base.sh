@@ -36,4 +36,4 @@ wget -O /usr/local/bin/composer https://getcomposer.org/composer.phar
 chmod +x /usr/local/bin/composer
 
 # Configure siege
-echo -e "cache=false\nlogfile=/home/vagrant/siege.csv\ncsv=true\nlogging=true\nverbose=false\n" > ~/.siegerc
+echo -e "cache=false\nlogfile=/home/vagrant/siege.csv\ncsv=true\nlogging=true\nverbose=false\n" > /home/vagrant/.siegerc
