@@ -3,21 +3,66 @@
 ## Introduction
 
 Using [packer.io](https://packer.io), build and provision a [Vagrant](https://www.vagrantup.com/) box capable of running a LAMP stack application.
+This also puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/var/www` webroot on each box with some fake pages for testing.
 
-Currently this puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/var/www` webroot with some fake data for testing.
+## Boxes
+
+### virtualbox-web-debian6-php53
+
+ * Debian 6 "squeeze"
+ * MariaDB 10
+ * Apache 2.2.16
+ * Latest PHP 5.3 (dotdeb) w/ extensions: apc, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
+
+### virtualbox-web-debian7-php54
+
+ * Debian 7 "wheezy"
+ * MariaDB 10
+ * Apache 2.2.22
+ * Latest PHP 5.4 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy, zendopcache
+
+### virtualbox-web-debian7-php55
+
+ * Debian 7 "wheezy"
+ * MariaDB 10
+ * Apache 2.2.22
+ * Latest PHP 5.5 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
+
+### virtualbox-web-debian8-php56
+
+ * Debian 8 "jessie"
+ * MariaDB 10
+ * Apache 2.4.10
+ * PHP 5.6.6 w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
+
+### virtualbox-web-debian8-hhvm
+
+ * Debian 8 "jessie"
+ * MariaDB 10
+ * nginx 1.6.2
+ * HHVM 3.6 LTS
 
 ## Usage
 
-A number of builders are included in `build.json` for various versions of PHP, as well as HHVM.
-To build a PHP 5.6 box, for example, specify that builder name in the `only` argument:
+### Building
 
-	packer build -only="virtualbox-web-debian8-php56" build.json
+Build a specific box:
 
-You can also build multiple boxes at once, either by specifying specific builder names in the `only`
-argument:
+	packer build -only="virtualbox-web-debian7-php54" build.json
+
+Build multiple boxes at once:
 
 	packer build -only="virtualbox-web-debian8-php56,virtualbox-web-debian8-hhvm" build.json
 
-or leaving out the `only` argument, which builds everything:
+Build everything by leaving out the `only` argument:
 
 	packer build build.json
+
+### Benchmarking
+
+A `test.sh` script is provided which, when run, will go through each `vagrant.box` output artifact, start
+the box and run some `siege` benchmarks on each box. Each box is allocated 2 virtual CPU cores and 2GB of RAM.
+
+This is useful for testing raw application performance on different versions of PHP.
+
+The results (in CSV format) will be placed into a `test-results/` directory.
