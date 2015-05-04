@@ -22,7 +22,7 @@ chown -R vagrant:vagrant /home/vagrant/.ssh
 chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
 
 # Disable reverse lookup in SSH to speed things up
-echo -e "Host *\n    UseDNS no" >> /etc/ssh/ssh_config
+echo "UseDNS no" >> /etc/ssh/sshd_config
 
 # Update apt sources
 apt-get update
