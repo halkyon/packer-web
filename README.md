@@ -33,7 +33,7 @@ This also puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/
  * Debian 8 "jessie"
  * MariaDB 10
  * Apache 2.4.10
- * PHP 5.6.6 w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
+ * PHP 5.6.7 w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
 
 ### virtualbox-web-jessie-hhvm
 
