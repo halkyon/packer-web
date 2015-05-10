@@ -7,35 +7,35 @@ This also puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/
 
 ## Boxes
 
-### virtualbox-web-debian6-php53
+### virtualbox-web-squeeze-php53
 
  * Debian 6 "squeeze"
  * MariaDB 10
  * Apache 2.2.16
  * Latest PHP 5.3 (dotdeb) w/ extensions: apc, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
 
-### virtualbox-web-debian7-php54
+### virtualbox-web-wheezy-php54
 
  * Debian 7 "wheezy"
  * MariaDB 10
  * Apache 2.2.22
  * Latest PHP 5.4 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy, zendopcache
 
-### virtualbox-web-debian7-php55
+### virtualbox-web-wheezy-php55
 
  * Debian 7 "wheezy"
  * MariaDB 10
  * Apache 2.2.22
  * Latest PHP 5.5 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
 
-### virtualbox-web-debian8-php56
+### virtualbox-web-jessie-php56
 
  * Debian 8 "jessie"
  * MariaDB 10
  * Apache 2.4.10
  * PHP 5.6.6 w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
 
-### virtualbox-web-debian8-hhvm
+### virtualbox-web-jessie-hhvm
 
  * Debian 8 "jessie"
  * MariaDB 10
