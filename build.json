@@ -226,21 +226,28 @@
 		},
 		{
 			"type": "shell",
-			"script": "./scripts/debian-wheezy-mariadb.sh",
-			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
-			"only": [
-				"virtualbox-web-wheezy-php54",
-				"virtualbox-web-wheezy-php55",
-				"virtualbox-web-jessie-php56",
-				"virtualbox-web-jessie-hhvm"
-			]
-		},
-		{
-			"type": "shell",
 			"script": "./scripts/debian-squeeze-mariadb.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
 				"virtualbox-web-squeeze-php53"
+			]
+		},
+		{
+			"type": "shell",
+			"script": "./scripts/debian-wheezy-mariadb.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
+			"only": [
+				"virtualbox-web-wheezy-php54",
+				"virtualbox-web-wheezy-php55"
+			]
+		},
+		{
+			"type": "shell",
+			"script": "./scripts/debian-jessie-mariadb.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
+			"only": [
+				"virtualbox-web-jessie-php56",
+				"virtualbox-web-jessie-hhvm"
 			]
 		},
 		{
