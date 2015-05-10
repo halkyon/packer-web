@@ -6,14 +6,14 @@
 	},
 	"builders": [
 		{
-			"name": "virtualbox-web-debian6-php53",
+			"name": "virtualbox-web-squeeze-php53",
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
-			"vm_name": "web-debian6-php53",
-			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
+			"vm_name": "web-squeeze-php53",
+			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/6.0.10/amd64/iso-cd/debian-6.0.10-amd64-netinst.iso",
 			"iso_checksum": "7f82d341561035f65933da43f94d5b52",
 			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-debian6-php53/virtualbox",
+			"output_directory": "./builds/virtualbox-web-squeeze-php53/virtualbox",
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
 			"ssh_wait_timeout": "30m",
@@ -35,14 +35,14 @@
 			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
 		},
 		{
-			"name": "virtualbox-web-debian7-php54",
+			"name": "virtualbox-web-wheezy-php54",
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
-			"vm_name": "web-debian7-php54",
+			"vm_name": "web-wheezy-php54",
 			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
 			"iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
 			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-debian7-php54/virtualbox",
+			"output_directory": "./builds/virtualbox-web-wheezy-php54/virtualbox",
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
 			"ssh_wait_timeout": "30m",
@@ -64,14 +64,14 @@
 			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
 		},
 		{
-			"name": "virtualbox-web-debian7-php55",
+			"name": "virtualbox-web-wheezy-php55",
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
-			"vm_name": "web-debian7-php55",
+			"vm_name": "web-wheezy-php55",
 			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
 			"iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
 			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-debian7-php55/virtualbox",
+			"output_directory": "./builds/virtualbox-web-wheezy-php55/virtualbox",
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
 			"ssh_wait_timeout": "30m",
@@ -93,14 +93,14 @@
 			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
 		},
 		{
-			"name": "virtualbox-web-debian8-php56",
+			"name": "virtualbox-web-jessie-php56",
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
-			"vm_name": "web-debian8-php56",
+			"vm_name": "web-jessie-php56",
 			"iso_url": "http://cdimage.debian.org/mirror/cdimage/release/8.0.0/amd64/iso-cd/debian-8.0.0-amd64-netinst.iso",
 			"iso_checksum": "d9209f355449fe13db3963571b1f52d4",
 			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-debian8-php56/virtualbox",
+			"output_directory": "./builds/virtualbox-web-jessie-php56/virtualbox",
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
 			"ssh_wait_timeout": "30m",
@@ -122,14 +122,14 @@
 			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
 		},
 		{
-			"name": "virtualbox-web-debian8-hhvm",
+			"name": "virtualbox-web-jessie-hhvm",
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
-			"vm_name": "web-debian8-hhvm",
+			"vm_name": "web-jessie-hhvm",
 			"iso_url": "http://cdimage.debian.org/mirror/cdimage/release/8.0.0/amd64/iso-cd/debian-8.0.0-amd64-netinst.iso",
 			"iso_checksum": "d9209f355449fe13db3963571b1f52d4",
 			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-debian8-hhvm/virtualbox",
+			"output_directory": "./builds/virtualbox-web-jessie-hhvm/virtualbox",
 			"ssh_username": "{{user `username`}}",
 			"ssh_password": "{{user `password`}}",
 			"ssh_wait_timeout": "30m",
@@ -177,10 +177,10 @@
 			"source": "./scripts/apache2/silverstripe-vhost",
 			"destination": "/var/tmp/silverstripe-vhost",
 			"only": [
-				"virtualbox-web-debian6-php53",
-				"virtualbox-web-debian7-php54",
-				"virtualbox-web-debian7-php55",
-				"virtualbox-web-debian8-php56"
+				"virtualbox-web-squeeze-php53",
+				"virtualbox-web-wheezy-php54",
+				"virtualbox-web-wheezy-php55",
+				"virtualbox-web-jessie-php56"
 			]
 		},
 		{
@@ -188,7 +188,7 @@
 			"source": "./scripts/apache24/silverstripe-vhost",
 			"destination": "/var/tmp/silverstripe-vhost",
 			"only": [
-				"virtualbox-web-debian8-php56"
+				"virtualbox-web-jessie-php56"
 			]
 		},
 		{
@@ -196,7 +196,7 @@
 			"source": "./scripts/nginx/silverstripe-vhost",
 			"destination": "/var/tmp/silverstripe-vhost",
 			"only": [
-				"virtualbox-web-debian8-hhvm"
+				"virtualbox-web-jessie-hhvm"
 			]
 		},
 		{
@@ -204,7 +204,7 @@
 			"source": "./scripts/nginx/hhvm.conf",
 			"destination": "/var/tmp/nginx-hhvm.conf",
 			"only": [
-				"virtualbox-web-debian8-hhvm"
+				"virtualbox-web-jessie-hhvm"
 			]
 		},
 		{
@@ -212,7 +212,7 @@
 			"source": "./scripts/nginx/silverstripe.conf",
 			"destination": "/var/tmp/nginx-silverstripe.conf",
 			"only": [
-				"virtualbox-web-debian8-hhvm"
+				"virtualbox-web-jessie-hhvm"
 			]
 		},
 		{
@@ -230,10 +230,10 @@
 			"script": "./scripts/debian-wheezy-mariadb.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian7-php54",
-				"virtualbox-web-debian7-php55",
-				"virtualbox-web-debian8-php56",
-				"virtualbox-web-debian8-hhvm"
+				"virtualbox-web-wheezy-php54",
+				"virtualbox-web-wheezy-php55",
+				"virtualbox-web-jessie-php56",
+				"virtualbox-web-jessie-hhvm"
 			]
 		},
 		{
@@ -241,7 +241,7 @@
 			"script": "./scripts/debian-squeeze-mariadb.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian6-php53"
+				"virtualbox-web-squeeze-php53"
 			]
 		},
 		{
@@ -249,7 +249,7 @@
 			"script": "./scripts/debian-squeeze-php53.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian6-php53"
+				"virtualbox-web-squeeze-php53"
 			]
 		},
 		{
@@ -257,7 +257,7 @@
 			"script": "./scripts/debian-wheezy-php54.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian7-php54"
+				"virtualbox-web-wheezy-php54"
 			]
 		},
 		{
@@ -265,7 +265,7 @@
 			"script": "./scripts/debian-wheezy-php55.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian7-php55"
+				"virtualbox-web-wheezy-php55"
 			]
 		},
 		{
@@ -273,7 +273,7 @@
 			"script": "./scripts/debian-jessie-php56.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian8-php56"
+				"virtualbox-web-jessie-php56"
 			]
 		},
 		{
@@ -281,7 +281,7 @@
 			"script": "./scripts/debian-jessie-hhvm.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian8-hhvm"
+				"virtualbox-web-jessie-hhvm"
 			]
 		},
 		{
@@ -289,10 +289,10 @@
 			"script": "./scripts/silverstripe-php5-apache2.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian6-php53",
-				"virtualbox-web-debian7-php54",
-				"virtualbox-web-debian7-php55",
-				"virtualbox-web-debian8-php56"
+				"virtualbox-web-squeeze-php53",
+				"virtualbox-web-wheezy-php54",
+				"virtualbox-web-wheezy-php55",
+				"virtualbox-web-jessie-php56"
 			]
 		},
 		{
@@ -300,7 +300,7 @@
 			"script": "./scripts/silverstripe-hhvm-nginx.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-debian8-hhvm"
+				"virtualbox-web-jessie-hhvm"
 			]
 		}
 	],
