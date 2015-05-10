@@ -48,11 +48,11 @@ This also puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/
 
 Build a specific box:
 
-	packer build -only="virtualbox-web-debian7-php54" build.json
+	packer build -only="virtualbox-web-wheezy-php54" build.json
 
 Build multiple boxes at once:
 
-	packer build -only="virtualbox-web-debian8-php56,virtualbox-web-debian8-hhvm" build.json
+	packer build -only="virtualbox-web-jessie-php56,virtualbox-web-jessie-hhvm" build.json
 
 Build everything by leaving out the `only` argument:
 
