@@ -179,8 +179,7 @@
 			"only": [
 				"virtualbox-web-squeeze-php53",
 				"virtualbox-web-wheezy-php54",
-				"virtualbox-web-wheezy-php55",
-				"virtualbox-web-jessie-php56"
+				"virtualbox-web-wheezy-php55"
 			]
 		},
 		{
