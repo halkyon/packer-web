@@ -9,7 +9,7 @@ VBOX_ISO=/home/vagrant/VBoxGuestAdditions.iso
 
 apt-get update
 apt-get -y dist-upgrade
-apt-get -y install build-essential dkms
+apt-get -y install linux-headers-$(uname -r) build-essential dkms
 
 if [ -f /etc/init.d/virtualbox-ose-guest-utils ]; then
 	/etc/init.d/virtualbox-ose-guest-utils stop

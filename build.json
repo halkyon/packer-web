@@ -308,6 +308,11 @@
 			"only": [
 				"virtualbox-web-jessie-hhvm"
 			]
+		},
+		{
+			"type": "shell",
+			"script": "./scripts/cleanup.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
 		}
 	],
 	"post-processors": [
