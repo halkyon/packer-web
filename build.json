@@ -221,6 +221,11 @@
 		},
 		{
 			"type": "shell",
+			"script": "./scripts/vagrant.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
+		},
+		{
+			"type": "shell",
 			"script": "./scripts/debian-base.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
 		},
