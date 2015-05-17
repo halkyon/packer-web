@@ -1,0 +1,119 @@
+{
+	"description": "Build and provision a basic machine",
+	"variables": {
+		"username": "vagrant",
+		"password": "vagrant"
+	},
+	"builders": [
+		{
+			"name": "virtualbox-squeeze",
+			"type": "virtualbox-iso",
+			"guest_os_type": "Debian_64",
+			"vm_name": "virtualbox-squeeze",
+			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/6.0.10/amd64/iso-cd/debian-6.0.10-amd64-netinst.iso",
+			"iso_checksum": "7f82d341561035f65933da43f94d5b52",
+			"iso_checksum_type": "md5",
+			"output_directory": "./builds/virtualbox-squeeze/virtualbox",
+			"ssh_username": "{{user `username`}}",
+			"ssh_password": "{{user `password`}}",
+			"ssh_wait_timeout": "30m",
+			"http_directory": "./scripts",
+			"boot_wait": "5s",
+			"boot_command": [
+				"<esc><wait>",
+				"install auto=true ",
+				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+				"keymap=us ",
+				"netcfg/get_domain=unassigned-domain ",
+				"hostname={{ .Name }} ",
+				"passwd/username={{user `username`}} ",
+				"passwd/user-fullname={{user `username`}} ",
+				"passwd/user-password-again={{user `password`}} ",
+				"passwd/user-password={{user `password`}} ",
+				"-- <enter>"
+			],
+			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
+		},
+		{
+			"name": "virtualbox-wheezy",
+			"type": "virtualbox-iso",
+			"guest_os_type": "Debian_64",
+			"vm_name": "virtualbox-wheezy",
+			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
+			"iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
+			"iso_checksum_type": "md5",
+			"output_directory": "./builds/virtualbox-wheezy/virtualbox",
+			"ssh_username": "{{user `username`}}",
+			"ssh_password": "{{user `password`}}",
+			"ssh_wait_timeout": "30m",
+			"http_directory": "./scripts",
+			"boot_wait": "5s",
+			"boot_command": [
+				"<esc><wait>",
+				"install auto=true ",
+				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+				"keymap=us ",
+				"netcfg/get_domain=unassigned-domain ",
+				"hostname={{ .Name }} ",
+				"passwd/username={{user `username`}} ",
+				"passwd/user-fullname={{user `username`}} ",
+				"passwd/user-password-again={{user `password`}} ",
+				"passwd/user-password={{user `password`}} ",
+				"-- <enter>"
+			],
+			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
+		},
+		{
+			"name": "virtualbox-jessie",
+			"type": "virtualbox-iso",
+			"guest_os_type": "Debian_64",
+			"vm_name": "virtualbox-jessie",
+			"iso_url": "http://cdimage.debian.org/mirror/cdimage/release/8.0.0/amd64/iso-cd/debian-8.0.0-amd64-netinst.iso",
+			"iso_checksum": "d9209f355449fe13db3963571b1f52d4",
+			"iso_checksum_type": "md5",
+			"output_directory": "./builds/virtualbox-jessie/virtualbox",
+			"ssh_username": "{{user `username`}}",
+			"ssh_password": "{{user `password`}}",
+			"ssh_wait_timeout": "30m",
+			"http_directory": "./scripts",
+			"boot_wait": "5s",
+			"boot_command": [
+				"<esc><wait>",
+				"install auto=true ",
+				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+				"keymap=us ",
+				"netcfg/get_domain=unassigned-domain ",
+				"hostname={{ .Name }} ",
+				"passwd/username={{user `username`}} ",
+				"passwd/user-fullname={{user `username`}} ",
+				"passwd/user-password-again={{user `password`}} ",
+				"passwd/user-password={{user `password`}} ",
+				"-- <enter>"
+			],
+			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"script": "./scripts/virtualbox-guestadditions.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
+		},
+		{
+			"type": "shell",
+			"script": "./scripts/vagrant.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
+		},
+		{
+			"type": "shell",
+			"script": "./scripts/cleanup.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
+		}
+	],
+	"post-processors": [
+		{
+			"type": "vagrant",
+			"output": "./builds/{{.BuildName}}/vagrant.box"
+		}
+	]
+}
