@@ -1,4 +1,5 @@
 #!/bin/bash -x
+export DEBIAN_FRONTEND=noninteractive
 
 umount /vagrant
 
