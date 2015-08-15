@@ -113,7 +113,7 @@
 	"post-processors": [
 		{
 			"type": "vagrant",
-			"output": "./builds/{{.BuildName}}/vagrant.box"
+			"output": "./builds/{{.BuildName}}.box"
 		}
 	]
 }
