@@ -1,4 +1,5 @@
 #!/bin/bash -x
+export DEBIAN_FRONTEND=noninteractive
 
 if [ ! -e /home/vagrant/.vbox_version ]; then
 	exit 0

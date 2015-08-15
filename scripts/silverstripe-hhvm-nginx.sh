@@ -1,4 +1,5 @@
 #!/bin/bash -ex
+export DEBIAN_FRONTEND=noninteractive
 
 # Disable default site and enable silverstripe site
 rm /etc/nginx/sites-enabled/default

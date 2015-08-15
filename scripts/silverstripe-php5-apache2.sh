@@ -1,4 +1,5 @@
 #!/bin/bash -ex
+export DEBIAN_FRONTEND=noninteractive
 
 # Enable mod-rewrite in Apache
 a2enmod rewrite
