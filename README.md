@@ -7,40 +7,33 @@ This also puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/
 
 ## Boxes
 
-### virtualbox-web-squeeze-php53
-
- * Debian 6 "squeeze"
- * MariaDB 10
- * Apache 2.2.16
- * Latest PHP 5.3 (dotdeb) w/ extensions: apc, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
-
 ### virtualbox-web-wheezy-php54
 
  * Debian 7 "wheezy"
  * MariaDB 10
- * Apache 2.2.22
- * Latest PHP 5.4 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy, zendopcache
+ * Apache 2.2
+ * PHP 5.4 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy, zendopcache
 
 ### virtualbox-web-wheezy-php55
 
  * Debian 7 "wheezy"
  * MariaDB 10
- * Apache 2.2.22
- * Latest PHP 5.5 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
+ * Apache 2.2
+ * PHP 5.5 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
 
 ### virtualbox-web-jessie-php56
 
  * Debian 8 "jessie"
  * MariaDB 10
- * Apache 2.4.10
- * PHP 5.6.7 w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
+ * Apache 2.4
+ * PHP 5.6 w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
 
 ### virtualbox-web-jessie-hhvm
 
  * Debian 8 "jessie"
  * MariaDB 10
- * nginx 1.6.2
- * HHVM 3.6 LTS
+ * nginx 1.6
+ * HHVM
 
 ## Usage
 

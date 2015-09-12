@@ -6,35 +6,6 @@
 	},
 	"builders": [
 		{
-			"name": "virtualbox-web-squeeze-php53",
-			"type": "virtualbox-iso",
-			"guest_os_type": "Debian_64",
-			"vm_name": "web-squeeze-php53",
-			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/6.0.10/amd64/iso-cd/debian-6.0.10-amd64-netinst.iso",
-			"iso_checksum": "7f82d341561035f65933da43f94d5b52",
-			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-squeeze-php53/virtualbox",
-			"ssh_username": "{{user `username`}}",
-			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "30m",
-			"http_directory": "./scripts",
-			"boot_wait": "5s",
-			"boot_command": [
-				"<esc><wait>",
-				"install auto=true ",
-				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-				"keymap=us ",
-				"netcfg/get_domain=unassigned-domain ",
-				"hostname={{ .Name }} ",
-				"passwd/username={{user `username`}} ",
-				"passwd/user-fullname={{user `username`}} ",
-				"passwd/user-password-again={{user `password`}} ",
-				"passwd/user-password={{user `password`}} ",
-				"-- <enter>"
-			],
-			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
-		},
-		{
 			"name": "virtualbox-web-wheezy-php54",
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
@@ -177,7 +148,6 @@
 			"source": "./scripts/apache2/silverstripe-vhost",
 			"destination": "/var/tmp/silverstripe-vhost",
 			"only": [
-				"virtualbox-web-squeeze-php53",
 				"virtualbox-web-wheezy-php54",
 				"virtualbox-web-wheezy-php55"
 			]
@@ -231,14 +201,6 @@
 		},
 		{
 			"type": "shell",
-			"script": "./scripts/debian-squeeze-mariadb.sh",
-			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
-			"only": [
-				"virtualbox-web-squeeze-php53"
-			]
-		},
-		{
-			"type": "shell",
 			"script": "./scripts/debian-wheezy-mariadb.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
@@ -253,14 +215,6 @@
 			"only": [
 				"virtualbox-web-jessie-php56",
 				"virtualbox-web-jessie-hhvm"
-			]
-		},
-		{
-			"type": "shell",
-			"script": "./scripts/debian-squeeze-php53.sh",
-			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
-			"only": [
-				"virtualbox-web-squeeze-php53"
 			]
 		},
 		{
@@ -300,7 +254,6 @@
 			"script": "./scripts/silverstripe-php5-apache2.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-squeeze-php53",
 				"virtualbox-web-wheezy-php54",
 				"virtualbox-web-wheezy-php55",
 				"virtualbox-web-jessie-php56"
