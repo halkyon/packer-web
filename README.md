@@ -5,6 +5,8 @@
 Using [packer.io](https://packer.io), build and provision a [Vagrant](https://www.vagrantup.com/) box capable of running a LAMP stack application.
 This also puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/var/www` webroot on each box with some fake pages for testing.
 
+Also bundled is a `build-minimal.json` file for building boxes with only VirtualBox Guest Additions on them. Useful if you just want to start from scratch.
+
 ## Boxes
 
 ### virtualbox-web-wheezy-php54
