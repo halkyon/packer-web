@@ -12,7 +12,7 @@ This also puts a copy of [SilverStripe](http://www.silverstripe.org) into the `/
  * Debian 7 "wheezy"
  * MariaDB 10
  * Apache 2.2
- * PHP 5.4 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy, zendopcache
+ * PHP 5.4 w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy, zendopcache
 
 ### virtualbox-web-wheezy-php55
 
@@ -50,6 +50,10 @@ Build multiple boxes at once:
 Build everything by leaving out the `only` argument:
 
 	packer build build.json
+
+Build minimal boxes with only VirtualBox Guest Additions installed on them:
+
+	packer build build-minimal.json
 
 ### Benchmarking
 
