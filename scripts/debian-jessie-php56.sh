@@ -1,11 +1,6 @@
 #!/bin/bash -ex
 export DEBIAN_FRONTEND=noninteractive
 
-# Setup apt repository for PHP
-wget -O - http://www.dotdeb.org/dotdeb.gpg | apt-key add -
-echo 'deb http://packages.dotdeb.org jessie all' > /etc/apt/sources.list.d/dotdeb.list
-echo 'deb-src http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list.d/dotdeb.list
-
 # Install software
 apt-get update
 apt-get -y install \

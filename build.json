@@ -6,70 +6,12 @@
 	},
 	"builders": [
 		{
-			"name": "virtualbox-web-wheezy-php54",
-			"type": "virtualbox-iso",
-			"guest_os_type": "Debian_64",
-			"vm_name": "web-wheezy-php54",
-			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
-			"iso_checksum": "774d1fc8c5364e63b22242c33a89c1a3",
-			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-wheezy-php54/virtualbox",
-			"ssh_username": "{{user `username`}}",
-			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "30m",
-			"http_directory": "./scripts",
-			"boot_wait": "5s",
-			"boot_command": [
-				"<esc><wait>",
-				"install auto=true ",
-				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-				"keymap=us ",
-				"netcfg/get_domain=unassigned-domain ",
-				"hostname={{ .Name }} ",
-				"passwd/username={{user `username`}} ",
-				"passwd/user-fullname={{user `username`}} ",
-				"passwd/user-password-again={{user `password`}} ",
-				"passwd/user-password={{user `password`}} ",
-				"-- <enter>"
-			],
-			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
-		},
-		{
-			"name": "virtualbox-web-wheezy-php55",
-			"type": "virtualbox-iso",
-			"guest_os_type": "Debian_64",
-			"vm_name": "web-wheezy-php55",
-			"iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
-			"iso_checksum": "774d1fc8c5364e63b22242c33a89c1a3",
-			"iso_checksum_type": "md5",
-			"output_directory": "./builds/virtualbox-web-wheezy-php55/virtualbox",
-			"ssh_username": "{{user `username`}}",
-			"ssh_password": "{{user `password`}}",
-			"ssh_wait_timeout": "30m",
-			"http_directory": "./scripts",
-			"boot_wait": "5s",
-			"boot_command": [
-				"<esc><wait>",
-				"install auto=true ",
-				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-				"keymap=us ",
-				"netcfg/get_domain=unassigned-domain ",
-				"hostname={{ .Name }} ",
-				"passwd/username={{user `username`}} ",
-				"passwd/user-fullname={{user `username`}} ",
-				"passwd/user-password-again={{user `password`}} ",
-				"passwd/user-password={{user `password`}} ",
-				"-- <enter>"
-			],
-			"shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P -h now"
-		},
-		{
 			"name": "virtualbox-web-jessie-php56",
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
 			"vm_name": "web-jessie-php56",
-			"iso_url": "http://cdimage.debian.org/mirror/cdimage/release/8.3.0/amd64/iso-cd/debian-8.3.0-amd64-netinst.iso",
-			"iso_checksum": "a9b490b4215d1e72e876b031dafa7184",
+			"iso_url": "http://cdimage.debian.org/mirror/cdimage/release/8.4.0/amd64/iso-cd/debian-8.4.0-amd64-netinst.iso",
+			"iso_checksum": "8d52d1b7789cd5a464aae719f05299ec",
 			"iso_checksum_type": "md5",
 			"output_directory": "./builds/virtualbox-web-jessie-php56/virtualbox",
 			"ssh_username": "{{user `username`}}",
@@ -97,8 +39,8 @@
 			"type": "virtualbox-iso",
 			"guest_os_type": "Debian_64",
 			"vm_name": "web-jessie-hhvm",
-			"iso_url": "http://cdimage.debian.org/mirror/cdimage/release/8.3.0/amd64/iso-cd/debian-8.3.0-amd64-netinst.iso",
-			"iso_checksum": "a9b490b4215d1e72e876b031dafa7184",
+			"iso_url": "http://cdimage.debian.org/mirror/cdimage/release/8.4.0/amd64/iso-cd/debian-8.4.0-amd64-netinst.iso",
+			"iso_checksum": "8d52d1b7789cd5a464aae719f05299ec",
 			"iso_checksum_type": "md5",
 			"output_directory": "./builds/virtualbox-web-jessie-hhvm/virtualbox",
 			"ssh_username": "{{user `username`}}",
@@ -135,22 +77,8 @@
 		},
 		{
 			"type": "file",
-			"source": "./scripts/php/apc.php",
-			"destination": "/var/tmp/apc.php"
-		},
-		{
-			"type": "file",
 			"source": "./scripts/php/opcache.php",
 			"destination": "/var/tmp/opcache.php"
-		},
-		{
-			"type": "file",
-			"source": "./scripts/apache2/silverstripe-vhost",
-			"destination": "/var/tmp/silverstripe-vhost",
-			"only": [
-				"virtualbox-web-wheezy-php54",
-				"virtualbox-web-wheezy-php55"
-			]
 		},
 		{
 			"type": "file",
@@ -201,36 +129,11 @@
 		},
 		{
 			"type": "shell",
-			"script": "./scripts/debian-wheezy-mariadb.sh",
-			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
-			"only": [
-				"virtualbox-web-wheezy-php54",
-				"virtualbox-web-wheezy-php55"
-			]
-		},
-		{
-			"type": "shell",
 			"script": "./scripts/debian-jessie-mariadb.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
 				"virtualbox-web-jessie-php56",
 				"virtualbox-web-jessie-hhvm"
-			]
-		},
-		{
-			"type": "shell",
-			"script": "./scripts/debian-wheezy-php54.sh",
-			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
-			"only": [
-				"virtualbox-web-wheezy-php54"
-			]
-		},
-		{
-			"type": "shell",
-			"script": "./scripts/debian-wheezy-php55.sh",
-			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
-			"only": [
-				"virtualbox-web-wheezy-php55"
 			]
 		},
 		{
@@ -254,8 +157,6 @@
 			"script": "./scripts/silverstripe-php5-apache2.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'",
 			"only": [
-				"virtualbox-web-wheezy-php54",
-				"virtualbox-web-wheezy-php55",
 				"virtualbox-web-jessie-php56"
 			]
 		},

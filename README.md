@@ -9,20 +9,6 @@ Also bundled is a `build-minimal.json` file for building boxes with only Virtual
 
 ## Boxes
 
-### virtualbox-web-wheezy-php54
-
- * Debian 7 "wheezy"
- * MariaDB 10
- * Apache 2.2
- * PHP 5.4 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy, zendopcache
-
-### virtualbox-web-wheezy-php55
-
- * Debian 7 "wheezy"
- * MariaDB 10
- * Apache 2.2
- * PHP 5.5 (dotdeb) w/ extensions: apcu, curl, gd, imagick, ldap, mcrypt, mysqlnd, sqlite, tidy
-
 ### virtualbox-web-jessie-php56
 
  * Debian 8 "jessie"
@@ -43,7 +29,7 @@ Also bundled is a `build-minimal.json` file for building boxes with only Virtual
 
 Build a specific box:
 
-	packer build -only="virtualbox-web-wheezy-php54" build.json
+	packer build -only="virtualbox-web-jessie-php56" build.json
 
 Build multiple boxes at once:
 
