@@ -3,6 +3,7 @@ umount /vagrant
 
 # remove development packages
 apt-get -y purge linux-headers-$(uname -r) build-essential dkms
+apt-get -y clean
 apt-get -y autoremove
 apt-get autoclean
 
