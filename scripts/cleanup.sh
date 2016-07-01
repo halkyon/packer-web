@@ -4,8 +4,7 @@ umount /vagrant
 # remove development packages
 apt-get -y purge linux-headers-$(uname -r) build-essential dkms
 apt-get -y autoremove
-apt-get -y clean
-apt-get -y autoclean
+apt-get autoclean
 
 # zero out free disk space to aid in VM compression
 # this keeps filling right to the end of the disk
@@ -45,11 +44,3 @@ count=`df --sync -kP /boot | tail -n1 | awk -F ' ' '{print $4}'`;
 count=$((count -= 1))
 dd if=/dev/zero of=/boot/whitespace bs=1024 count=$count;
 rm /boot/whitespace;
-
-swappart=$(cat /proc/swaps | grep -v Filename | tail -n1 | awk -F ' ' '{print $1}')
-if [ "$swappart" != "" ]; then
-	swapoff $swappart;
-	dd if=/dev/zero of=$swappart;
-	mkswap $swappart;
-	swapon $swappart;
-fi
