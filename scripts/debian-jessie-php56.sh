@@ -1,8 +1,6 @@
 #!/bin/bash -ex
-export DEBIAN_FRONTEND=noninteractive
 
 # Install software
-apt-get update
 apt-get -y install \
 	apache2 libapache2-mod-php5 php5 php5-apcu php5-common php5-cli \
 	php5-tidy php5-ldap php5-mcrypt php5-curl php5-imagick \

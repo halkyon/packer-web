@@ -38,6 +38,11 @@
 	"provisioners": [
 		{
 			"type": "shell",
+			"script": "./scripts/configure-apt.sh",
+			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
+		},
+		{
+			"type": "shell",
 			"script": "./scripts/virtualbox-guestadditions.sh",
 			"execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S '{{.Path}}'"
 		},

@@ -1,5 +1,4 @@
 #!/bin/bash -ex
-export DEBIAN_FRONTEND=noninteractive
 
 # allow vagrant user to run sudo commands
 echo "vagrant ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vagrant

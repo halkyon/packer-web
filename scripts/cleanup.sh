@@ -1,10 +1,8 @@
 #!/bin/bash -x
-export DEBIAN_FRONTEND=noninteractive
-
 umount /vagrant
 
 # remove development packages
-apt-get -y remove linux-headers-$(uname -r) build-essential
+apt-get -y purge linux-headers-$(uname -r) build-essential dkms
 apt-get -y autoremove
 apt-get autoclean
 

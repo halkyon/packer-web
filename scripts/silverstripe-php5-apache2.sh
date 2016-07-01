@@ -1,5 +1,4 @@
 #!/bin/bash -ex
-export DEBIAN_FRONTEND=noninteractive
 
 # Enable mod-rewrite in Apache
 a2enmod rewrite
@@ -35,7 +34,6 @@ sudo mv /var/tmp/GeneratePagesTask.php /var/www/mysite/code/tasks/GeneratePagesT
 # Install extra scripts for checking PHP information
 echo -e "<?php\nphpinfo();" > /var/www/phpinfo.php
 mv /var/tmp/opcache.php /var/www/opcache.php
-mv /var/tmp/apc.php /var/www/apc.php
 
 # Fix webroot permissions
 chown -R www-data:www-data /var/www
