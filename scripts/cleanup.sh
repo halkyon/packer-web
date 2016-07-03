@@ -1,15 +1,15 @@
-#!/bin/bash -x
+#!/bin/bash -ex
 
 # remove development packages
 apt-get -y purge linux-headers-$(uname -r) build-essential dkms
-apt-get -y clean
 apt-get -y autoremove
+apt-get -y clean
 apt-get autoclean
 
 # zero out free disk space to aid in VM compression
 # this keeps filling right to the end of the disk
 # so it should error with "no space left on device" when completed
-dd if=/dev/zero of=/EMPTY bs=1M
+dd if=/dev/zero of=/EMPTY bs=1M || echo "dd exit code $? is suppressed"
 rm -f /EMPTY
 
 # remove apt caches and documentation files
@@ -36,11 +36,14 @@ unset HISTFILE
 # zero-fill the root partition
 count=`df --sync -kP / | tail -n1  | awk -F ' ' '{print $4}'`;
 count=$((count -= 1))
-dd if=/dev/zero of=/tmp/whitespace bs=1024 count=$count;
-rm /tmp/whitespace;
+dd if=/dev/zero of=/tmp/whitespace bs=1024 count=$count || echo "dd exit code $? is suppressed";
+rm -f /tmp/whitespace;
 
 # zero-fill the boot partition
 count=`df --sync -kP /boot | tail -n1 | awk -F ' ' '{print $4}'`;
 count=$((count -= 1))
-dd if=/dev/zero of=/boot/whitespace bs=1024 count=$count;
-rm /boot/whitespace;
+dd if=/dev/zero of=/boot/whitespace bs=1024 count=$count || echo "dd exit code $? is suppressed";
+rm -f /boot/whitespace;
+
+# sync stops packer from quitting to early, before the large file is deleted
+sync
