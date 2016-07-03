@@ -6,12 +6,6 @@ apt-get -y autoremove
 apt-get -y clean
 apt-get autoclean
 
-# zero out free disk space to aid in VM compression
-# this keeps filling right to the end of the disk
-# so it should error with "no space left on device" when completed
-dd if=/dev/zero of=/EMPTY bs=1M || echo "dd exit code $? is suppressed"
-rm -f /EMPTY
-
 # remove apt caches and documentation files
 find /var/lib/apt -type f | xargs rm -f
 find /var/lib/doc -type f | xargs rm -f
@@ -33,17 +27,32 @@ unset HISTFILE
 [ -f /root/.bash_history ] && rm /root/.bash_history
 [ -f /home/vagrant/.bash_history ] && rm /home/vagrant/.bash_history
 
-# zero-fill the root partition
-count=`df --sync -kP / | tail -n1  | awk -F ' ' '{print $4}'`;
-count=$((count -= 1))
-dd if=/dev/zero of=/tmp/whitespace bs=1024 count=$count || echo "dd exit code $? is suppressed";
-rm -f /tmp/whitespace;
-
-# zero-fill the boot partition
+# zero-fill the boot partition to aid in VM compression
 count=`df --sync -kP /boot | tail -n1 | awk -F ' ' '{print $4}'`;
 count=$((count -= 1))
 dd if=/dev/zero of=/boot/whitespace bs=1024 count=$count || echo "dd exit code $? is suppressed";
 rm -f /boot/whitespace;
 
-# sync stops packer from quitting to early, before the large file is deleted
+set +e
+swapuuid="`/sbin/blkid -o value -l -s UUID -t TYPE=swap`";
+case "$?" in
+	2|0) ;;
+	*) exit 1 ;;
+esac
+set -e
+
+# zero-fill the swap partition to aid in VM compression
+if [ "x${swapuuid}" != "x" ]; then
+	# Whiteout the swap partition to reduce box size
+	# Swap is disabled till reboot
+	swappart="`readlink -f /dev/disk/by-uuid/$swapuuid`";
+	/sbin/swapoff "$swappart";
+	dd if=/dev/zero of="$swappart" bs=1M || echo "dd exit code $? is suppressed";
+	/sbin/mkswap -U "$swapuuid" "$swappart";
+fi
+
+dd if=/dev/zero of=/EMPTY bs=1M || echo "dd exit code $? is suppressed"
+rm -f /EMPTY
+
+# block until the empty file has been deleted
 sync
