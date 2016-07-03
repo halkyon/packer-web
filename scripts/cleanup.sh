@@ -1,5 +1,4 @@
 #!/bin/bash -x
-umount /vagrant
 
 # remove development packages
 apt-get -y purge linux-headers-$(uname -r) build-essential dkms
